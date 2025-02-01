@@ -23,7 +23,7 @@ Route::post('/logout', [AuthenticatedController::class, "logout"])->name('logout
 //    Route::get('/', [StoreController::class, 'showShop']);
 //});
 
-Route::get("/{name}", [StoreController::class, 'see'])->name("boutique");
+//Route::get("/{name}", [StoreController::class, 'see'])->name("boutique");
 
 Route::domain('{store}.mardino.tech')->group(function () {
     Route::get('/', [StoreController::class, 'showShop']);
