@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,10 +23,10 @@ class StoreController extends Controller
 
         return to_route('list');
     }
-    function showShop($boutique){
-        // Récupérer la boutique par son nom
-        $boutique = Store::where('name', $boutique)->firstOrFail();
-        $user = User::where("id", $boutique->user_id);
+    function showShop(Request $request){
+        $shopName = $request->route('store');
+        $shop = Store::where('name', $shopName)->firstOrFail();
+        $user = $shop->user;
         return view('show', compact('user'));
     }
 
