@@ -13,7 +13,7 @@ class StoreController extends Controller
     }
     function store(Request $request){
         $request->validate([
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|regex:/^\S*$/',
         ]);
 
         Store::create([
@@ -21,6 +21,24 @@ class StoreController extends Controller
             "user_id"=>Auth::user()->id,
         ]);
 
-        return redirect()->back()->with('success','Store added successfully');
+        return to_route('list');
     }
+    function showShop(Request $request){
+        $shopName = $request->route('store');
+        $shop = Store::where('name', $shopName)->firstOrFail();
+        $user = $shop->user;
+        return view('show', compact('user'));
+    }
+
+    function list(){
+        $id = Auth::user()->id;
+        $shops = Store::where('user_id', $id)->get();
+        return view('list', compact('shops'));
+    }
+
+//    function see ($name) {
+//        $shop = Store::where('name', $name)->firstOrFail();
+//        $user = $shop->user;
+//        return view('view', compact('user'));
+//    }
 }

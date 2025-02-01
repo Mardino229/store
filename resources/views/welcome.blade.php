@@ -24,6 +24,12 @@
                     background-color: green;
                     color: white;
                 }
+
+                .bg-black{
+                    background-color: #2c3e50;
+                    color: white;
+                }
+
             </style>
         @endif
     </head>
@@ -50,11 +56,16 @@
                 </div>
             </form>
         </div>
-        <div class="p-4">
+        <div class="p-4 flex gap-4 justify-between ">
             <form action="{{route("logout")}}" method="POST">
                 @csrf
                 <button type="submit" class="flex w-full bg justify-center px-3 py-2 rounded-md" >Logout</button>
             </form>
+            <button class="flex w-full bg-black justify-center px-3 py-2 rounded-md">
+                <a href="{{route("list")}}">
+                    My Stores
+                </a>
+            </button>
         </div>
     </body>
 </html>
