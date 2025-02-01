@@ -35,5 +35,6 @@ jobs:
             cp .env.example .env
             composer install
             php artisan migrate
+            php artisan key:generate
 #            chmod +x run.sh
 #            ./run.sh

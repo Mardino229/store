@@ -19,11 +19,15 @@ Route::get('/home', [StoreController::class, "home"])->name('home')->middleware(
 
 Route::post('/logout', [AuthenticatedController::class, "logout"])->name('logout');
 
-Route::domain('{store}.' . config('app.domain'))->group(function () {
-    Route::get('/', [StoreController::class, 'showShop']);
-});
+//Route::domain('{store}.' . config('app.domain'))->group(function () {
+//    Route::get('/', [StoreController::class, 'showShop']);
+//});
 
 Route::get("/{name}", [StoreController::class, 'see'])->name("boutique");
+
+Route::domain('{store}.mardino.tech')->group(function () {
+    Route::get('/', [StoreController::class, 'showShop']);
+});
 
 Route::get("/user/list", [StoreController::class, 'list'])->name("list")->middleware('auth');
 
