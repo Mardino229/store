@@ -14,6 +14,10 @@ Route::domain('mardino.me')->group(function () {
         return view('login');
     });
     Route::get('/register', [AuthenticatedController::class, 'register']);
+
+    Route::get('/login', function () {
+        return view("login");
+    });
     Route::post('/store', [AuthenticatedController::class, "create"])->name('register');
 
     Route::get('/loginView', [AuthenticatedController::class, "loginView"])->name('loginView');
