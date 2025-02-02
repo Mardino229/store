@@ -19,7 +19,7 @@ Route::get('/home', [StoreController::class, "home"])->name('home')->middleware(
 
 Route::post('/logout', [AuthenticatedController::class, "logout"])->name('logout');
 
-Route::domain('{store}.' . config('app.domain'))->group(function () {
+Route::domain('{store}.mardino.tech')->group(function () {
     Route::get('/', [StoreController::class, 'showShop']);
 });
 
