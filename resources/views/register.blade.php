@@ -23,7 +23,7 @@
         </style>
     @endif
 </head>
-<body class="flex items-center justify-center w-screen h-screen">
+<body class="flex items-center justify-center w-screen min-h-screen">
 <div class="flex min-h-full w-full flex-col justify-center px-6 py-12 lg:px-8 mb-2">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
 
@@ -38,6 +38,9 @@
                 <label for="name" class="block text-sm/6 font-medium text-gray-900">Name</label>
                 <div class="mt-2">
                     <input  type="text" name="name" id="name" autocomplete="name" required class="block w-full rounded-md bg-white  px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                    @error('name')
+                        <p class="text-red-600 text-center">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -45,6 +48,9 @@
                 <label for="age" class="block text-sm/6 font-medium text-gray-900">Age</label>
                 <div class="mt-2">
                     <input  type="number" name="age" id="age" autocomplete="age" required class="block w-full rounded-md bg-white  px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                    @error('age')
+                        <p class="text-red-600 text-center">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -52,6 +58,9 @@
                 <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
                 <div class="mt-2">
                     <input  type="email" name="email" id="email" autocomplete="email" required class="block w-full rounded-md bg-white  px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                    @error('email')
+                        <p class="text-red-600 text-center">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -62,7 +71,7 @@
                 <div class="mt-2">
                     <input type="password" name="password" id="password" autocomplete="current-password" required class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                     @error('password')
-                    <p class="text-red-600 text-center">{{ $message }}</p>
+                        <p class="text-red-600 text-center">{{ $message }}</p>
                     @enderror
                 </div>
             </div>

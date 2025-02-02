@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRequest;
 use App\Models\Store;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,11 +13,7 @@ class StoreController extends Controller
     function home(){
         return view('welcome');
     }
-    function store(Request $request){
-        $request->validate([
-            'name' => 'required|min:3|regex:/^\S*$/',
-        ]);
-
+    function store(StoreRequest $request){
         Store::create([
             "name" => $request->name,
             "user_id"=>Auth::user()->id,

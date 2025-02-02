@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,15 +15,9 @@ class AuthenticatedController extends Controller
         return view('register');
     }
 
-    function create(Request $request) {
-        $request->validate([
-            'name' => 'required',
-            'age' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:8',
-        ]);
+    function create(RegisterRequest $request) {
 
-        $user = User::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'age' => $request->age,
@@ -32,17 +28,14 @@ class AuthenticatedController extends Controller
 
     }
 
-    function login(Request $request) {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+    function login(LoginRequest $request) {
+
         $credentials = $request->only('email', 'password');
         if (Auth::guard()->attempt($credentials)){
             return redirect()->intended('/home');
         }
 
-        return back()->with('err', 'Invalid Credentiales');
+        return back()->with('err', 'Invalid Credentials');
     }
 
     function loginView() {
