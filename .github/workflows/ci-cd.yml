@@ -36,6 +36,6 @@ jobs:
             composer install
             php artisan migrate
             php artisan key:generate
-            cp -rv /root/Storefy /var/www/html/Storefy
+            cp -rv /root/Storefy /var/www/html
 #            chmod +x run.sh
 #            ./run.sh
