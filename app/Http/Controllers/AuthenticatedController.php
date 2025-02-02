@@ -42,7 +42,7 @@ class AuthenticatedController extends Controller
             return redirect()->intended('/home');
         }
 
-        return back()->with('err', 'Invalid Credential');
+        return back()->with('err', 'Invalid Credentials');
     }
 
     function loginView() {
