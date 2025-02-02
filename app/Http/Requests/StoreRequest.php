@@ -38,7 +38,7 @@ class StoreRequest extends FormRequest
         return [
             'name.required' => 'The name of store is required.',
             'name.string' => 'The name of the store must be a string.',
-            'name.regex' => 'The subdomain name must be valid.',
+            'name.regex' => 'The subdomain name must be valid (The name can only contain miniscule letters, numbers and dashes (e.g. my-shop).',
             'name.unique' => 'This is already taken.',
         ];
     }

@@ -46,6 +46,9 @@
                 Your store {{$shop->name}} is available on <a class="blue" target="_blank" href="http://{{$shop->name}}.mardino.tech">{{$shop->name}}.mardino.tech</a>.
             </p><br>
         @endforeach
+        @if (empty($shops))
+            <p class="">No shop. Please <a class="blue" href="/home">Create a store</a></p>
+        @endif
     </div>
 </div>
 <div class="p-4">
