@@ -28,6 +28,8 @@ class StoreController extends Controller
         $shop = Store::where('name', $store)->firstOrFail();
 
         $user = User::find($shop->user_id);
+
+
         return view('show', compact('user'));
     }
 
