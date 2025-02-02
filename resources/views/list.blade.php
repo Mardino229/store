@@ -43,7 +43,7 @@
     <div class="py-8 w-full rounded-lg px-2 flex items-center flex-col justify-center bg-green">
         @foreach($shops as $shop)
             <p>
-                Your store {{$shop->name}} is available on <a class="blue" target="_blank" href="http://{{$shop->name}}.mardino.tech">{{$shop->name}}.mardino.tech</a>.
+                Your store {{$shop->name}} is available on <a class="blue" target="_blank" href={{"http://".$shop->name.".".config('app.domain')}}>{{$shop->name}}.{{config('app.domain')}}</a>.
             </p><br>
         @endforeach
         @if (empty($shops))

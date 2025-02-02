@@ -5,11 +5,11 @@ use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::domain('{store}.mardino.me')->group(function () {
+Route::domain('{store}.'. config('app.domain'))->group(function () {
     Route::get('/', [StoreController::class, 'showShop']);
 });
 
-Route::domain('mardino.me')->group(function () {
+Route::domain( config('app.domain'))->group(function () {
     Route::get('/', function () {
         return view('login');
     });
